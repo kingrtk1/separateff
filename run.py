@@ -22,7 +22,7 @@ if __name__ == "__main__":
     input_file_path = input("Enter the input file path: ")
     search_terms = []
 
-    print("Enter the search terms. Type 'done' on new line when finished:")
+    print("Enter the search terms. Type 'done' on  new line when finished:")
     while True:
         term = input()
         if term.lower() == 'done':
