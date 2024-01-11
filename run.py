@@ -10,14 +10,14 @@ def extract_blocks_with_keywords(file_path, search_terms, output_file_path):
                 output_file.write(''.join(current_block))
                 current_block = []
 
-    print(f"Blocks containing specified search terms extracted and saved to: {output_file_path}")
+    print(f"search terms extracted and saved to: {output_file_path}")
 
 if __name__ == "__main__":
     # Ask the user for input file, search terms, and manual output file path
     input_file_path = input("Enter the input file path: ")
     search_terms = []
 
-    print("Enter the search terms. Type 'done' on a new line when finished:")
+    print("Enter search terms. Type 'done' on line when finished:")
     while True:
         term = input()
         if term.lower() == 'done':
