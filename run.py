@@ -1,21 +1,30 @@
-def search_and_append(input_file, output_file, search_term):
-    try:
-        with open(input_file, 'r') as in_file, open(output_file, 'a') as out_file:
-            for line in in_file:
-                if search_term in line:
-                    out_file.write(line)
+import os
 
-        print(f"Search and append completed. Results appended to {output_file}")
-    except Exception as e:
-        print(f"Error: {e}")
+def extract_blocks_with_keywords(file_path, search_terms, output_file_path):
+    with open(file_path, 'r') as input_file, open(output_file_path, 'w') as output_file:
+        current_block = []
+        for line in input_file:
+            current_block.append(line)
+
+            if any(search_term.strip() == line.strip() for search_term in search_terms):
+                output_file.write(''.join(current_block))
+                current_block = []
+
+    print(f"Blocks containing specified search terms extracted and saved to: {output_file_path}")
 
 if __name__ == "__main__":
-    input_file = input("Enter the path of the input file: ")
-    output_file = input("Enter the path of the output file: ")
+    # Ask the user for input file, search terms, and manual output file path
+    input_file_path = input("Enter the input file path: ")
+    search_terms = []
 
+    print("Enter the search terms. Type 'done' on a new line when finished:")
     while True:
-        search_term = input("Enter the search term (or type 'exit' to end): ")
-        if search_term.lower() == 'exit':
+        term = input()
+        if term.lower() == 'done':
             break
+        search_terms.append(term)
 
-        search_and_append(input_file, output_file, search_term)
+    output_file_path = input("Enter the manual output file path: ")
+
+    # Run the extraction function
+    extract_blocks_with_keywords(input_file_path, search_terms, output_file_path)
