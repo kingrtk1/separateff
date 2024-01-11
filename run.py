@@ -18,6 +18,16 @@ def extract_blocks_with_keywords(file_path, search_terms, output_file_path):
         print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
+    # Add the logo
+    logo = """
+SSSS   EEEEE  PPPP     A    RRRR     A    TTTTT  EEEEE  
+S      E      P   P   A A   R   R   A A     T    E      
+ SSS   EEE    PPPP   AAAAA  RRRR   AAAAA    T    EEE    
+    S  E      P      A   A  R  R   A   A    T    E      
+SSSS   EEEEE  P      A   A  R   R  A   A    T    EEEEE  
+"""
+    print("\033[93m" + logo + "\033[0m")  # Use ANSI escape codes for color
+
     # Ask the user for input file, search terms, and manual output file path
     input_file_path = input("Enter the input file path: ")
     search_terms = []
@@ -29,7 +39,7 @@ if __name__ == "__main__":
             break
         search_terms.append(term)
 
-    output_file_path = input("Enter output file path: ")
+    output_file_path = input("Enter the output file path: ")
 
     # Run the extraction function
     extract_blocks_with_keywords(input_file_path, search_terms, output_file_path)
